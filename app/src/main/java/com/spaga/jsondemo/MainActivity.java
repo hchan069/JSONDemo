@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -49,10 +50,17 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 JSONObject jsonObject = new JSONObject(result);
-
                 String weatherInfo = jsonObject.getString("weather");
 
-                Log.i("Weather Content: ", weatherInfo);
+                JSONArray array = new JSONArray(weatherInfo);
+
+                for (int i = 0; i < array.length(); i++) {
+                    JSONObject jsonPart = array.getJSONObject(i);
+                    Log.i("main", jsonPart.getString("main"));
+                    Log.i("description", jsonPart.getString("description"));
+
+                }
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
