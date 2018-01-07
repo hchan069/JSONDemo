@@ -37,9 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return result;
 
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return null;
@@ -59,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            Log.i("Website Content: ", result);
         }
     }
 
@@ -69,6 +66,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         DownloadTask task = new DownloadTask();
-        task.execute("api.openweathermap.org/data/2.5/weather?q=London");
+        task.execute("api.openweathermap.org/data/2.5/weather?q=London,uk");
     }
 }
